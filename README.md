@@ -1,35 +1,56 @@
-# Jeu de la vie C++
-Le jeu de la vie en C++
+# Le jeu de la vie
 
-## Quoi de neuf dans cette version ?
+Le jeu de la vie en C++ et SFML 3
+
+
+## Apports de la version
+
 - C'est une version C++ utilisant la bibliothèque graphique SFML3
-- Le jeu est capable de tourner dans une grande fenêtre sans gréver les performances
-- Au démarrage la grille occupe tout l'espace de l'écran
-- Noter que pour disposer d'un encore plus grand nombre de cellules il est possible de réduire leur taille
-- Le démarrage n'est pas automatique en random : on dessine des motifs ou on insère des modèles prédéfinis
- 
+- Le jeu démarre en mode plein écran, pour un spectacle maximum 😉
+- Pour disposer d'un plus grand nombre de cellules il est possible de réduire encore leur taille
+- La génération des cellules n'est ni automatique ni totalement aléatoire
+- C'est au joueur de dessiner des motifs ou d'insèrer des modèles prédéfinis *(Planeur, LWSS, ou Canon)*
+
+
+
 ## Mode d'emploi rapide
-Avant démarrage :
-- Clic gauche à la souris sur une case : la rend vivante (noire)
-- Clic droit à la souris sur une case : la rend morte (blanche)
-Démarrage du jeu :
-- Touche 'Espace' du clavier pour démarrer
-Après démarrage :
-- Touche 'P' : Insérer un 'Planeur' à déplacement aléatoire, sous le pointeur de souris
-- Touche 'L' : Insérer un 'LWSS' (le + petit vaisseau) à déplacement aléatoire, sous le pointeur de souris
-- Touche 'C' : Insérer un canon à planeurs (orientés SE) à l'emplacement du pointeur de souris
-- Touche 'E' du clavier : tout effacer (mettre toute les cases mortes)
-- Touche 'R' du clavier : Stoppe le jeu et efface tout
-Quitter le jeu
-- Touche 'Échap' pour quitter 
+
+#### Avant démarrage :
+
+- **Clic gauche** à la souris sur une case : la rend vivante (noire)
+- **Clic droit** à la souris sur une case : la rend morte (blanche)
+
+#### Démarrage du jeu :
+
+- **Touche 'Espace'** du clavier pour démarrer *(le titre de la fenêtre indique alors  '**RUNNING**')*
+
+#### Après démarrage :
+
+- **Touche 'P'** : Insérer sous le pointeur de la souris, un '*Planeur*' à déplacement aléatoire
+- **Touche 'L'**  : Insérer sous le pointeur de la souris, un '*LWSS*' (LightWeight SpaceShip) à déplacement aléatoire
+- **Touche 'C'** : Insérer à la droite du pointeur de la souris, un '*Canon à planeurs*' *(à déplacements orientés SE)*
+- **Touche 'E'** : Tout effacer (rendre toute les cases mortes)
+- **Touche 'R'** : Stopper le jeu et effacer tout
+
+#### Mettre en pause :
+
+- **Touche 'Espace'** du clavier pour mettre en pause *(le titre de la fenêtre indique alors  '**EN PAUSE**')*
+
+#### Quitter le jeu
+
+- **Touche 'Échap'** pour quitter 
+
 
 ## Compilation
-- La bibliothèque SFML3 doit être pré-installée 
-	- sous macOS 'brew install SFML' ('homebrew' doit évidemment être installé)
-	- sous Windows 'vcpkg install sfml:x64-windows' ('vcpkg' doit être installé...)
-- Pour compiler le programme,
-	- sous macOS : utiliser un IDE (Qt Creator ou VSC), ou lancer dans le Terminal la commande 'sh compile.sh' à partir du dossier du projet
-	- sous Windows : utiliser un IDE (Qt Creator ou VSC), ou lancer dans PowerShell la commande 'compile.bat'
-- Si la compilation ne vous inspire pas, téléchargez simplement les exécutables proposés pour MacOS et Windows
 
-# Bon jeu !
+- La bibliothèque '*SFML3*' doit être pré-installée 
+	- **sous macOS** : taper dans le Terminal `'brew install SFML'` ('*homebrew*' doit évidemment être installé)
+	- **sous Windows** : taper dans PowerShell `'vcpkg install sfml:x64-windows'`('*vcpkg*' doit être installé)
+
+- Pour compiler le programme,
+	- **sous macOS** : utiliser Qt Creator, ou dans le **Terminal** taper`'sh compile.sh'`à partir du dossier du projet
+	- **sous Windows** : utiliser Qt Creator, ou dans **PowerShell** taper`'compile.bat'`à partir du dossier du projet
+
+- Pour passer l'étape de compilation, **télécharger** simplement les exécutables proposés pour MacOS et Windows
+
+
