@@ -1,40 +1,35 @@
 # Jeu de la vie C++
 Le jeu de la vie en C++
 
-# Mais dis donc ! Tu l'as déjà fait ! Y a quoi de neuf ??
-En terme de règles, rien. C'est exactement le même jeu. Cependant il y a de grosses différences avec celui fait en Python.
-
- - Le jeu est fait en C++ avec SFML
- Comme C++ est un langage compilé (natif), c'est beaucoup plus rapide que la version Python
+## Quoi de neuf dans cette version ?
+- C'est une version C++ utilisant la bibliothèque graphique SFML3
+- Le jeu est capable de tourner dans une grande fenêtre sans gréver les performances
+- Au démarrage la grille occupe tout l'espace de l'écran
+- Noter que pour disposer d'un encore plus grand nombre de cellules il est possible de réduire leur taille
+- Le démarrage n'est pas automatique en random : on dessine des motifs ou on insère des modèles prédéfinis
  
- - Le jeu peut avoir une grande taille
- En effet c'était une limitation de la version Python. Ici, on peut le faire TRÈS grand, ça tournera très vite !
- 
- - Le jeu est moins facilement personnalisable
- Ma faute. En effet, sur la version Python, il y avait une ligne de commande avec laquelle on pouvait définir la taille de la grille. Ici il n'y a pas ça.
- Cependant vous pouvez la personnaliser. Pour cela, ouvrez le fichier main.c, et au début il y a des define WIDTH, HEIGHT et CELL_SIZE.
- Vous pouvez changer leur valeur, la fenêtre s'adaptera (attention à bien avoir TOUTES les cases visibles, si vous voulez beaucoup BEAUCOUP de cellules, réduisez la taille des cellules.
- 
- - Le jeu ne démarre pas en random
- Ça c'est un avantage. Vous pouvez cliquer sur les cases en début de partie afin de regarder des patterns précis, ce qu'il n'y a pas dans la version Python.
- 
-# Ok super, mais comment je m'en sert ? Ça démarre pas !
-Normal. Voici la (maigre) notice d'utilisation :
+## Mode d'emploi rapide
+Avant démarrage :
+- Clic gauche à la souris sur une case : la rend vivante (noire)
+- Clic droit à la souris sur une case : la rend morte (blanche)
+Démarrage du jeu :
+- Touche 'Espace' du clavier pour démarrer
+Après démarrage :
+- Touche 'P' : Insérer un 'Planeur' à déplacement aléatoire, sous le pointeur de souris
+- Touche 'L' : Insérer un 'LWSS' (le + petit vaisseau) à déplacement aléatoire, sous le pointeur de souris
+- Touche 'C' : Insérer un canon à planeurs (orientés SE) à l'emplacement du pointeur de souris
+- Touche 'E' du clavier : tout effacer (mettre toute les cases mortes)
+- Touche 'R' du clavier : Stoppe le jeu et efface tout
+Quitter le jeu
+- Touche 'Échap' pour quitter 
 
-Clic gauche de la souris sur une case : la rend vivante (noire)
-Clic droit de la souris sur une case : la rend morte (blanche)
-
-Touche C du clavier : tout effacer (mettre toute les cases mortes)
-Touche Espace du clavier : démarrer le jeu
-Touche R du clavier : stoppe le jeu et efface tout
-Touche Échap : Quitter (aussi faisable avec la petite croix)
-
-# Ok mais comment je le fait tourner ? Ou comment je le compile ?
-Il vous faudra SFML et un compilateur c++. 
-Sous Linux, vous pouvez faire : `g++ main.cpp -lsfml-graphics -lsfml-system -lsfml-window`
-
-Alternativement, la commande `make` compilera le programme avec les optimisations.
-La commande `make debug` enlève les optimisation et ajoute le drapeau `-g` pour le débogage.
-La commande `make clean` supprime le dossier `bin` contenant l'exécutable.
+## Compilation
+- La bibliothèque SFML3 doit être pré-installée 
+	- sous macOS 'brew install SFML' ('homebrew' doit évidemment être installé)
+	- sous Windows 'vcpkg install sfml:x64-windows' ('vcpkg' doit être installé...)
+- Pour compiler le programme,
+	- sous macOS : utiliser un IDE (Qt Creator ou VSC), ou lancer dans le Terminal la commande 'sh compile.sh' à partir du dossier du projet
+	- sous Windows : utiliser un IDE (Qt Creator ou VSC), ou lancer dans PowerShell la commande 'compile.bat'
+- Si la compilation ne vous inspire pas, téléchargez simplement les exécutables proposés pour MacOS et Windows
 
 # Bon jeu !
