@@ -14,5 +14,6 @@ Thumbs.db
 .qtcreator
 build/
 build2/
+dist/
 z_*/
 z_*.*
