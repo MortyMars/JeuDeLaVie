@@ -125,7 +125,6 @@ Pour Windows, la méthode recommandée reste `compile.bat` (plus simple).
 
 ## Notes techniques
 
->- **Architecture des processeurs** : le programme est compilé pour l'architecture de la machine qui compile. Un '.app' compilé sur un Mac Apple Silicon (M1/M2/M3) fonctionne sur les Mac Apple Silicon ; pour des Mac Intel, recompiler le même projet sur un Mac Intel. Même principe sous Windows (x64).
->- La création d'un '*binaire universel*' nécessiterait d'installer SFML en double configuration (Intel + Apple Silicon) sur la machine de compilation. Cette double installation n'est pas prise en charge ici par souci de simplicité.
+>- La création d'un '*binaire universel*' pour macOS aurait normalement nécessité la double installation de SFML (Intel + Apple Silicon) sur la machine de compilation. Cette solution n'a cependant pas été retenue car il aurait également fallu la reproduire pour une machine tierce sur laquelle on aurait souhaité relancer une compilation. Il lui a donc été préféré d'inclure directement les deux biblios dans un dossier embarqué (***'/dependencies'***) dans lequel le compilateur va chercher la version qui convient à l'architecture rencontrée.
 >- **Qt** ne prend pas part dans la construction du code source : les seuls fichiers nécessaires au programme sont `main.cpp`, `JeuDeLaVie.h`, `JeuDeLaVie.cpp`.
->- Les scripts d'empaquetage sont suffisament commentés (`pack_macos.sh`, `pack_windows.ps1`) pour pouvoir être adaptés facilement.
+>- Les scripts d'empaquetage sont suffisament commentés (`pack_macos.sh`, `pack_windows.ps1`) pour pouvoir, au besoin, être adaptés.
