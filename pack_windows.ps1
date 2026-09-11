@@ -82,13 +82,20 @@ $VsWhere = Join-Path ${env:ProgramFiles(x86)} "Microsoft Visual Studio\Installer
 if (Test-Path $VsWhere) {
     $CheminVS = & $VsWhere -latest -products * -property installationPath
     if ($CheminVS) {
+        # CORRECTION : On nettoie le nom et on s'assure d'avoir un format X.Y valide pour [version]
         $DossierRedist = Get-ChildItem (Join-Path $CheminVS "VC\Redist\MSVC") -Directory -ErrorAction SilentlyContinue |
-                         Sort-Object { [version]$_.Name } -Descending |
+                         Sort-Object { 
+                             $NomNettoye = $_.Name -replace '^v', ''
+                             # Si le nom ne contient pas de point (ex: "145"), on lui ajoute ".0" pour que [version] l'accepte
+                             if ($NomNettoye -and $NomNettoye -notmatch '\.') { $NomNettoye = "$NomNettoye.0" }
+                             if ($NomNettoye -match '^\d+(\.\d+)*$') { [version]$NomNettoye } else { [version]'0.0' }
+                         } -Descending |
                          Select-Object -First 1
         if ($DossierRedist) {
-            $DossierCrt = Join-Path $DossierRedist.FullName "x64\Microsoft.VC143.CRT"
-            if (Test-Path $DossierCrt) {
-                Copy-Item (Join-Path $DossierCrt "*.dll") $DossierFinal
+            # Recherche générique du dossier de runtime (ex: Microsoft.VC143.CRT ou Microsoft.VC145.CRT)
+            $DossierCrt = Get-ChildItem (Join-Path $DossierRedist.FullName "x64\*CRT") -Directory -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($DossierCrt -and (Test-Path $DossierCrt.FullName)) {
+                Copy-Item (Join-Path $DossierCrt.FullName "*.dll") $DossierFinal
                 Write-Host "  Copie du runtime Visual C++ : OK"
             }
         }

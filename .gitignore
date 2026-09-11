@@ -15,5 +15,6 @@ Thumbs.db
 build/
 build2/
 dist/
+dist-win/
 z_*/
 z_*.*
